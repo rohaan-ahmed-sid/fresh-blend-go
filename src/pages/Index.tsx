@@ -143,6 +143,27 @@ const Index = () => {
               <Badge className="bg-accent-grad text-accent-foreground rounded-full border-0">30% OFF</Badge>
             </div>
 
+            {/* Color picker */}
+            <div className="pt-2">
+              <div className="text-sm font-medium mb-2">
+                Color: <span className="text-muted-foreground capitalize">{color}</span>
+              </div>
+              <div className="flex items-center gap-3">
+                {COLOR_SWATCHES.map((s) => (
+                  <button
+                    key={s.key}
+                    onClick={() => setColor(s.key)}
+                    aria-label={`Select ${s.label}`}
+                    aria-pressed={color === s.key}
+                    className={`h-9 w-9 rounded-full border-2 transition-all hover:scale-110 ${
+                      color === s.key ? "border-foreground ring-2 ring-foreground/20 ring-offset-2 ring-offset-background" : "border-border"
+                    }`}
+                    style={{ backgroundColor: s.hex }}
+                  />
+                ))}
+              </div>
+            </div>
+
             <div className="flex flex-wrap gap-5 pt-2 text-sm text-muted-foreground">
               <span className="flex items-center gap-1.5"><Truck className="h-4 w-4 text-primary" /> Free Shipping</span>
               <span className="flex items-center gap-1.5"><RotateCcw className="h-4 w-4 text-primary" /> 7-Day Return</span>
