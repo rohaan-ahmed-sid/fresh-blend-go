@@ -14,12 +14,41 @@ import {
   Timer,
   Leaf,
 } from "lucide-react";
-import heroImg from "@/assets/juicer-hero.jpg";
-import gymImg from "@/assets/juicer-gym.jpg";
-import officeImg from "@/assets/juicer-office.jpg";
-import fruitsImg from "@/assets/juicer-fruits.jpg";
+import { useState } from "react";
+import heroPink from "@/assets/juicer-hero.jpg";
+import gymPink from "@/assets/juicer-gym.jpg";
+import officePink from "@/assets/juicer-office.jpg";
+import fruitsPink from "@/assets/juicer-fruits.jpg";
+import heroBlue from "@/assets/juicer-hero-blue.jpg";
+import gymBlue from "@/assets/juicer-gym-blue.jpg";
+import officeBlue from "@/assets/juicer-office-blue.jpg";
+import fruitsBlue from "@/assets/juicer-fruits-blue.jpg";
+import heroGreen from "@/assets/juicer-hero-green.jpg";
+import gymGreen from "@/assets/juicer-gym-green.jpg";
+import officeGreen from "@/assets/juicer-office-green.jpg";
+import fruitsGreen from "@/assets/juicer-fruits-green.jpg";
+import heroPurple from "@/assets/juicer-hero-purple.jpg";
+import gymPurple from "@/assets/juicer-gym-purple.jpg";
+import officePurple from "@/assets/juicer-office-purple.jpg";
+import fruitsPurple from "@/assets/juicer-fruits-purple.jpg";
 
-const ALT = "Pink portable electric juicer bottle for smoothies.";
+type ColorKey = "pink" | "blue" | "green" | "purple";
+
+const COLOR_IMAGES: Record<ColorKey, { hero: string; gym: string; office: string; fruits: string }> = {
+  pink: { hero: heroPink, gym: gymPink, office: officePink, fruits: fruitsPink },
+  blue: { hero: heroBlue, gym: gymBlue, office: officeBlue, fruits: fruitsBlue },
+  green: { hero: heroGreen, gym: gymGreen, office: officeGreen, fruits: fruitsGreen },
+  purple: { hero: heroPurple, gym: gymPurple, office: officePurple, fruits: fruitsPurple },
+};
+
+const COLOR_SWATCHES: { key: ColorKey; label: string; hex: string }[] = [
+  { key: "pink", label: "Pink", hex: "#EC9BB6" },
+  { key: "blue", label: "Blue", hex: "#2F6FE0" },
+  { key: "green", label: "Green", hex: "#9BC59D" },
+  { key: "purple", label: "Purple", hex: "#7E5BA6" },
+];
+
+const ALT = "Portable electric juicer bottle for smoothies.";
 
 // WhatsApp order link – pre-filled message
 const WA_NUMBER = "923051023307";
