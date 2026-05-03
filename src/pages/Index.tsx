@@ -75,6 +75,11 @@ const OrderButton = ({
 );
 
 const Index = () => {
+  const [color, setColor] = useState<ColorKey>("pink");
+  const heroImg = COLOR_IMAGES[color].hero;
+  const gymImg = COLOR_IMAGES[color].gym;
+  const officeImg = COLOR_IMAGES[color].office;
+  const fruitsImg = COLOR_IMAGES[color].fruits;
   return (
     <main className="min-h-screen bg-background overflow-x-hidden">
       {/* Nav */}
