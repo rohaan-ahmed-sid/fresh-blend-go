@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700;900&family=Inter:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,41 +6,49 @@
 
 @layer base {
   :root {
-    --background: 30 30% 98%;
-    --foreground: 150 15% 12%;
+    --background: 38 50% 97%;
+    --foreground: 150 25% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 150 15% 12%;
+    --card-foreground: 150 25% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 150 15% 12%;
+    --popover-foreground: 150 25% 10%;
 
-    --primary: 142 55% 32%;
-    --primary-foreground: 60 30% 98%;
-    --primary-glow: 142 65% 45%;
+    --primary: 145 65% 25%;
+    --primary-foreground: 60 40% 98%;
+    --primary-glow: 142 70% 45%;
 
-    --secondary: 30 25% 94%;
-    --secondary-foreground: 150 15% 12%;
+    --secondary: 38 45% 92%;
+    --secondary-foreground: 150 25% 10%;
 
-    --muted: 30 20% 94%;
-    --muted-foreground: 150 8% 40%;
+    --muted: 38 30% 93%;
+    --muted-foreground: 150 10% 38%;
 
-    --accent: 12 80% 65%;
+    --accent: 14 90% 60%;
     --accent-foreground: 0 0% 100%;
+
+    --citrus: 38 95% 58%;
+    --berry: 340 75% 55%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 30 15% 88%;
-    --input: 30 15% 88%;
-    --ring: 142 55% 32%;
+    --border: 38 25% 86%;
+    --input: 38 25% 86%;
+    --ring: 145 65% 25%;
 
-    --radius: 1rem;
+    --radius: 1.25rem;
 
-    --gradient-hero: linear-gradient(135deg, hsl(30 30% 98%) 0%, hsl(30 40% 94%) 100%);
-    --gradient-cta: linear-gradient(135deg, hsl(142 55% 32%), hsl(142 65% 42%));
-    --shadow-soft: 0 10px 40px -15px hsl(150 30% 20% / 0.15);
-    --shadow-cta: 0 10px 30px -10px hsl(142 55% 32% / 0.45);
+    --gradient-hero: radial-gradient(1200px 600px at 80% 0%, hsl(38 90% 80% / 0.5), transparent 60%),
+                     radial-gradient(900px 500px at 0% 100%, hsl(142 70% 70% / 0.35), transparent 60%),
+                     linear-gradient(180deg, hsl(38 50% 97%) 0%, hsl(38 50% 95%) 100%);
+    --gradient-cta: linear-gradient(135deg, hsl(145 65% 25%), hsl(142 70% 40%));
+    --gradient-accent: linear-gradient(135deg, hsl(14 90% 60%), hsl(38 95% 58%));
+    --gradient-berry: linear-gradient(135deg, hsl(340 75% 55%), hsl(14 90% 60%));
+    --shadow-soft: 0 20px 60px -20px hsl(150 40% 15% / 0.18);
+    --shadow-cta: 0 14px 40px -10px hsl(145 65% 25% / 0.5);
+    --shadow-glow: 0 0 80px hsl(142 70% 45% / 0.35);
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -55,17 +63,48 @@
 
 @layer base {
   * { @apply border-border; }
+  html { scroll-behavior: smooth; }
   body {
     @apply bg-background text-foreground;
     font-family: 'Inter', system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
   }
-  h1, h2, h3 { font-family: 'Fraunces', Georgia, serif; letter-spacing: -0.02em; }
+  h1, h2, h3 { font-family: 'Fraunces', Georgia, serif; letter-spacing: -0.025em; }
 }
 
 @layer utilities {
   .bg-hero { background: var(--gradient-hero); }
   .bg-cta { background: var(--gradient-cta); }
+  .bg-accent-grad { background: var(--gradient-accent); }
+  .bg-berry-grad { background: var(--gradient-berry); }
   .shadow-soft { box-shadow: var(--shadow-soft); }
   .shadow-cta { box-shadow: var(--shadow-cta); }
+  .shadow-glow { box-shadow: var(--shadow-glow); }
+  .text-balance { text-wrap: balance; }
+
+  @keyframes float-slow {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-18px) rotate(3deg); }
+  }
+  @keyframes float-rev {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(14px) rotate(-4deg); }
+  }
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-float-slow { animation: float-slow 7s ease-in-out infinite; }
+  .animate-float-rev { animation: float-rev 6s ease-in-out infinite; }
+  .animate-spin-slow { animation: spin-slow 22s linear infinite; }
+  .animate-marquee { animation: marquee 28s linear infinite; }
+  .animate-fade-up { animation: fade-up 0.8s ease-out both; }
 }
